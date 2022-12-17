@@ -1,0 +1,4 @@
+openaiApiKey: "sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+openaiOrganizationID: "org-XXXXXXXXXXXXXXX"
+chatgptTriggerKeyword: ""
+padLocalToken: "56fadf67c430cd3465d4u3183nb31336"

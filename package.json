@@ -1,0 +1,38 @@
+{
+  "name": "wechaty-puppet-padlocal-gpt3",
+  "version": "0.1.0",
+  "description": "Use wechaty-puppet-padlocal chat with gpt3",
+  "main": "src/main.ts",
+  "export": "src/main.ts",
+  "scripts": {
+    "dev": "nodemon --exec node --watch config.yaml --loader ts-node/esm src/main.ts",
+    "build": "tsc"
+  },
+  "author": "EyreFree",
+  "license": "ISC",
+  "dependencies": {
+    "openai": "^3.1.0",
+    "dotenv": "^16.0.3",
+    "uuid": "^9.0.0",
+    "wechaty": "^1.20.2",
+    "wechaty-puppet-wechat": "^1.18.4",
+    "wechaty-puppet-padlocal": "^1.20.1",
+    "wechaty-plugin-contrib": "1.11.2",
+    "yaml": "^2.1.3",
+    "nth-check": ">=2.0.1"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.0",
+    "@types/uuid": "^9.0.0",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "nth-check": ">=2.0.1"
+  },
+  "nodemonConfig": {
+    "watch": "src",
+    "ext": "ts",
+    "exec": "node --loader ts-node/esm src/main.ts",
+    "delay": 500
+  },
+  "type": "module"
+}
