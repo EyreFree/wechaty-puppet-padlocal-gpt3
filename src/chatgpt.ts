@@ -55,8 +55,8 @@ export class ChatGPTBot {
   }
 
   // get trigger keyword in group chat: (@Name <keyword>)
-  get chatGroupTriggerKeyword(): string {
-    return `@${this.botName} ${this.chatgptTriggerKeyword || ""}`;
+  get chatGroupTriggerPrefix(): string {
+    return `@${this.botName}`;
   }
 
   // configure API with model API keys and run a initial test
@@ -80,10 +80,20 @@ export class ChatGPTBot {
     if (item.length > 1) {
       text = item[item.length - 1];
     }
-    text = text.replace(
-      isPrivateChat ? this.chatgptTriggerKeyword : this.chatGroupTriggerKeyword,
-      ""
-    );
+    if (false == isPrivateChat) {
+      text = text.replace(
+        `${this.chatGroupTriggerPrefix} `,
+        ""
+      );
+      text = text.replace(
+        `${this.chatGroupTriggerPrefix} `,
+        ""
+      );
+      text = text.replace(
+        this.chatGroupTriggerPrefix,
+        ""
+      );
+    }
     return text;
   }
 
@@ -91,12 +101,10 @@ export class ChatGPTBot {
   triggerGPTMessage(text: string, isPrivateChat: boolean = false): boolean {
     const chatgptTriggerKeyword = this.chatgptTriggerKeyword;
     let triggered = false;
-    if (isPrivateChat) {
+    if (isPrivateChat || text.startsWith(this.chatGroupTriggerPrefix)) {
       triggered = chatgptTriggerKeyword
-        ? text.startsWith(chatgptTriggerKeyword)
+        ? text.indexOf(chatgptTriggerKeyword) != -1
         : true;
-    } else {
-      triggered = text.startsWith(this.chatGroupTriggerKeyword);
     }
     if (triggered) {
       console.log(`🎯 ChatGPT Triggered: ${text}`);
