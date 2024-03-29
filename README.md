@@ -1,3 +1,5 @@
+[![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-brightgreen.svg)](https://wechaty.js.org)
+
 # wechaty-puppet-padlocal-gpt3
 
 Use wechaty-puppet-padlocal chat with gpt3
